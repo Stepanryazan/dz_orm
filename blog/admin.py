@@ -9,4 +9,3 @@ class BlogPostAdmin(admin.ModelAdmin):
     list_filter = ("published",)
     search_fields = ("title",)
 
-

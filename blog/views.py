@@ -7,6 +7,7 @@ from blog.models import BlogPost
 
 
 class BlogPostListView(ListView):
+    """ List"""
     model = BlogPost
 
     def get_queryset(self, *args, **kwargs):
@@ -16,16 +17,18 @@ class BlogPostListView(ListView):
 
 
 class BlogPostDetailView(DetailView):
+    """Detail"""
     model = BlogPost
 
     def get_object(self, queryset=None):
         self.object = super().get_object(queryset)
         self.object.views += 1
-        self.object.save()
+        self.object.save(update_fields=['views'])
         return self.object
 
 
 class BlogPostCreateView(CreateView):
+    """Create"""
     model = BlogPost
     fields = ('title', 'body', 'image',)
     success_url = reverse_lazy("blog:list")
@@ -39,6 +42,7 @@ class BlogPostCreateView(CreateView):
 
 
 class BlogPostUpdateView(UpdateView):
+    """Update"""
     model = BlogPost
     fields = ('title', 'body', 'image',)
 
@@ -54,6 +58,7 @@ class BlogPostUpdateView(UpdateView):
 
 
 class BlogPostDeleteView(DeleteView):
+    """Delete"""
     model = BlogPost
     success_url = reverse_lazy("blog:list")
 

@@ -15,8 +15,6 @@ class StileFormMixin:
                 field.widget.attrs['class'] = 'form-control'
 
 
-
-
 class ProductForm(StileFormMixin, forms.ModelForm):
     """Form for adding a new product."""
     banned_words = ['казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар']

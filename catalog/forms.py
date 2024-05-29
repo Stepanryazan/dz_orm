@@ -44,3 +44,9 @@ class VersionForm(StileFormMixin, forms.ModelForm):
     class Meta:
         model = Version
         fields = "__all__"
+
+
+class ProductModeratorForm(StileFormMixin, forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ("published", "product_description", "category")

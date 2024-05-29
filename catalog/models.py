@@ -65,6 +65,8 @@ class Product(models.Model):
     user = models.ForeignKey(
         User, on_delete=models.SET_NULL, verbose_name="Создан пользователем", **NULLABLE,
     )
+    published = models.BooleanField(default=False, verbose_name="Опубликован",)
+
     # manufactured_at = models.DateTimeField(
     #     verbose_name="Дата производства продукта",
     #     **NULLABLE,
@@ -77,6 +79,11 @@ class Product(models.Model):
         verbose_name = "продукт"
         verbose_name_plural = "продукты"
         ordering = ["product_name", "category"]
+        permissions = [
+            ('can_cancel_puplication', 'Может отменять публикацию'),
+            ('can_change_desription', 'Может менять описание'),
+            ('can_change_category', 'Может менять категорию')
+        ]
 
 
 class Version(models.Model):

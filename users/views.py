@@ -65,7 +65,6 @@ def reset_password(request):
         return render(request, 'users/reset_password.html')
 
 
-
 class ProfileView(UpdateView):
     model = User
     form_class = ProfileForm

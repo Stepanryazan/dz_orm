@@ -18,15 +18,18 @@
                     <h4 class="card-title pricing-card-title">{{ product.price }} руб.</h4>
                     <p>Активная версия: {{ product.active_version }}</p>
                     <p>Номер версии: {{ product.active_version_number }}</p>
+                    <p>Создан: {{ product.user }}</p>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <div class="btn-group" role="group" aria-label="Группа маленьких кнопок">
                                 <a href="{% url 'catalog:product_detail' product.pk %}" type="button"
                                    class="btn btn-danger">Посмотреть</a>
+                                {% if user == product.user or perms.catalog.can_cancel_puplication and perms.catalog.can_change_desription and perms.catalog.can_change_category %}
                                 <a href="{% url 'catalog:product_update' product.pk %}" type="button"
                                    class="btn btn-warning">Изменить</a>
                                 <a href="{% url 'catalog:product_delete' product.pk %}" type="button"
                                    class="btn btn-success">Удалить</a>
+                                {% endif %}
                             </div>
                         </li>
                     </ul>
